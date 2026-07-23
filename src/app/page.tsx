@@ -46,7 +46,8 @@ export default function Home() {
               <use href="#bean" />
             </svg>
 
-            <h1 className="hero__title">We are kin.</h1>
+            <h1 className="hero__title">Mukago</h1>
+            <p className="hero__subtitle">We are kin.</p>
             <p className="hero__gloss">omukago (n.) · the Buganda friendship pact</p>
 
             <p className="hero__lede">
