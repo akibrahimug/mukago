@@ -5,17 +5,15 @@
   --kibanda:   #1B2A20; /* deep canopy green — shade the robusta grows under */
   --kibanda-2: #142019; /* darker variant for footer */
   --laterite:  #B1502F; /* red clay soil */
-  --cherry:    #7A1F2B; /* ripe coffee cherry red */
+  --cherry:    #7A1F2B; /* ripe coffee cherry / blood-pact red */
   --husk:      #EDE3D0; /* parchment / dried husk */
   --husk-dim:  #DCCFB4;
   --roast:     #3B241A; /* roasted bean brown, used as ink */
   --gold:      #C89B3C; /* harvest gold, thread colour */
 
-  /* font sources are self-hosted + preloaded via next/font (see layout.tsx),
-     which sets these custom properties on <html> */
-  --font-display: var(--font-zilla-slab), Georgia, serif;
-  --font-body: var(--font-work-sans), -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, monospace;
+  --font-display: 'Zilla Slab', Georgia, serif;
+  --font-body: 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
 
   --edge: 1.5rem;
   --max: 72rem;
@@ -71,16 +69,6 @@ img, svg{ display: block; max-width: 100%; }
   border: 0;
 }
 
-/* honeypot field — off-screen for humans, still reachable by simple bots
-   that fill in every field they can find in the DOM */
-.signup__hp{
-  position: absolute;
-  left: -9999px;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-}
-
 .skip-link{
   position: absolute;
   left: -9999px;
@@ -106,6 +94,17 @@ a{ color: inherit; }
 .section{
   padding: clamp(4rem, 9vw, 7.5rem) var(--edge);
 }
+
+.eyebrow{
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cherry);
+  margin: 0 0 1rem;
+}
+.eyebrow--light{ color: var(--gold); }
 
 /* generic reveal-on-scroll */
 .reveal{
@@ -225,23 +224,24 @@ a{ color: inherit; }
   font-weight: 600;
   font-size: clamp(2.6rem, 7vw, 4.5rem);
   line-height: 1.05;
-  margin: 0 0 1rem;
+  margin: 0 0 1.5rem;
 }
-.hero__gloss{
+.hero__title .def{
   font-family: var(--font-mono);
-  font-size: 0.8rem;
-  letter-spacing: 0.04em;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 0.34em;
+  letter-spacing: 0.02em;
   color: var(--husk-dim);
-  margin: 0 0 2rem;
+  vertical-align: 0.1em;
 }
 .hero__lede{
   font-size: clamp(1.05rem, 2.2vw, 1.25rem);
   line-height: 1.6;
   color: var(--husk-dim);
-  margin: 0 auto 1.25rem;
+  margin: 0 auto 2rem;
   max-width: 34rem;
 }
-.hero__lede:last-of-type{ margin-bottom: 2rem; }
 .hero__actions{
   margin-top: 3rem;
   display: flex;
@@ -343,90 +343,175 @@ a{ color: inherit; }
   border-top: 1px dashed rgba(59, 36, 26, 0.3);
   border-bottom: 1px dashed rgba(59, 36, 26, 0.3);
 }
-
-/* ===========================================================
-   How we work
-   =========================================================== */
-
-.how{
-  background: var(--laterite);
-  color: var(--husk);
-}
-.how__inner{
-  max-width: 38rem;
-  margin: 0 auto;
-}
-.how__title{
+.why__signature{
   font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(1.9rem, 4vw, 2.6rem);
-  line-height: 1.15;
-  margin: 0 0 1.75rem;
+  font-style: italic;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #6b5344;
+  margin: 2rem 0 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(59, 36, 26, 0.15);
 }
-.how__body{
-  font-size: 1.08rem;
-  line-height: 1.75;
-  margin: 0 0 1.5rem;
-  color: rgba(237, 227, 208, 0.92);
-}
-.how__body:last-child{ margin-bottom: 0; }
 
 /* ===========================================================
-   What we promise
+   Pact intro
    =========================================================== */
 
-.promise{
-  background: var(--kibanda);
-  color: var(--husk);
-}
-.promise__inner{
-  max-width: 38rem;
-  margin: 0 auto;
-}
-.promise__title{
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(1.9rem, 4vw, 2.6rem);
-  line-height: 1.15;
-  margin: 0 0 1.75rem;
-}
-.promise__body{
-  font-size: 1.08rem;
-  line-height: 1.75;
-  margin: 0 0 1.5rem;
-  color: var(--husk-dim);
-  padding-left: 1.25rem;
-  border-left: 2px solid var(--gold);
-}
-.promise__body:last-child{ margin-bottom: 0; }
-
-/* ===========================================================
-   Who we work with
-   =========================================================== */
-
-.who{
+.pact-intro{
   background: var(--husk);
   text-align: center;
-  padding-top: clamp(3rem, 7vw, 5rem);
-  padding-bottom: clamp(3rem, 7vw, 5rem);
+  padding-top: clamp(2.5rem, 6vw, 4rem);
+  padding-bottom: clamp(2.5rem, 6vw, 4rem);
 }
-.who__inner{
+.pact-intro__inner{
   max-width: 34rem;
   margin: 0 auto;
 }
-.who__title{
+.pact-intro__title{
   font-family: var(--font-display);
   font-weight: 600;
   font-size: clamp(1.6rem, 3.5vw, 2.1rem);
-  margin: 0 0 1.25rem;
+  margin: 0 0 1rem;
 }
-.who__body{
+.pact-intro__body{
   font-size: 1.05rem;
   line-height: 1.6;
   color: #6b5344;
+  margin: 0;
+}
+
+/* ===========================================================
+   Halves — grown / roasted
+   =========================================================== */
+
+.halves{
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 0;
+}
+.halves__seam{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 3px;
+  transform: translateX(-50%);
+  z-index: 2;
+  background-image: repeating-linear-gradient(to bottom, var(--gold) 0 8px, transparent 8px 19px);
+  border-radius: 2px;
+}
+.half{
+  padding: clamp(4rem, 9vw, 7rem) clamp(1.75rem, 6vw, 4rem);
+  color: var(--husk);
+}
+.half--grown{ background: var(--laterite); }
+.half--roasted{ background: var(--roast); }
+.half__title{
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 2.75rem);
   margin: 0 0 1rem;
 }
-.who__body:last-child{ margin-bottom: 0; }
+.half__body{
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: rgba(237, 227, 208, 0.85);
+  margin: 0;
+  max-width: 26rem;
+}
+
+@media (max-width: 720px){
+  .halves{ grid-template-columns: 1fr; }
+  .halves__seam{
+    left: 0; right: 0; top: 50%; bottom: auto;
+    width: auto; height: 3px;
+    transform: translateY(-50%);
+    background-image: repeating-linear-gradient(to right, var(--gold) 0 8px, transparent 8px 19px);
+  }
+}
+
+/* ===========================================================
+   Journey — timeline
+   =========================================================== */
+
+.journey{
+  background: var(--kibanda);
+  color: var(--husk);
+}
+.journey__inner{
+  max-width: 34rem;
+  margin: 0 auto;
+}
+.journey__title{
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  text-align: center;
+  margin: 0 0 3rem;
+}
+.journey__list{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+.journey__list::before{
+  content: "";
+  position: absolute;
+  top: 0.4rem;
+  bottom: 0.4rem;
+  left: 3.5rem;
+  width: 2px;
+  background-image: repeating-linear-gradient(to bottom, var(--gold) 0 6px, transparent 6px 14px);
+}
+.journey__item{
+  position: relative;
+  display: grid;
+  grid-template-columns: 3.5rem 1fr;
+  column-gap: 1.5rem;
+  padding-bottom: 2.25rem;
+}
+.journey__item:last-child{ padding-bottom: 0; }
+.journey__item::before{
+  content: "";
+  position: absolute;
+  left: calc(3.5rem - 3.5px);
+  top: 0.3rem;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 2px solid var(--kibanda);
+}
+.journey__year{
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.03em;
+  color: var(--gold);
+  text-align: right;
+  padding-top: 0.15rem;
+}
+.journey__desc{
+  font-size: 1.02rem;
+  line-height: 1.6;
+  color: var(--husk-dim);
+  margin: 0;
+  padding-top: 0.1rem;
+}
+.journey__item--after .journey__year{
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+@media (max-width: 480px){
+  .journey__list::before{ left: 2.5rem; }
+  .journey__item{ grid-template-columns: 2.5rem 1fr; column-gap: 1rem; }
+  .journey__item::before{ left: calc(2.5rem - 3.5px); }
+}
 
 /* ===========================================================
    Signup
@@ -476,7 +561,6 @@ a{ color: inherit; }
   border-color: var(--gold);
   background: rgba(237, 227, 208, 0.09);
 }
-.signup__input:disabled{ opacity: 0.6; }
 
 .signup__submit{
   flex: 0 0 auto;
@@ -497,12 +581,6 @@ a{ color: inherit; }
 .signup__submit:active{
   transform: scale(0.97);
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.25);
-}
-.signup__submit:disabled{
-  opacity: 0.7;
-  cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
 }
 
 .signup__fine{
